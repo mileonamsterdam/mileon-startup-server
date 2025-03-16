@@ -2,10 +2,14 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
-    ports:
-      - "80:80" # Expose port 80 for the ACME challenge
     env_file:
-      - env.env
+      - .env
+    ports:
+      - 80:80                       # Expose for the ACME challenge
     volumes:
-      - ./data:/etc/letsencrypt/live/${DOMAIN}
+      - ./data:/etc/letsencrypt     # /etc/letsencrypt/live/${DOMAIN}/fullchain.pem, /etc/letsencrypt/live/${DOMAIN}/privkey.pem
     command: certonly --standalone -d ${DOMAIN} -m ${EMAIL} --agree-tos --non-interactive
+
+# docker compose -f 'docker-compose.yml' up -d --build
+# docker compose logs
+# docker compose -f 'docker-compose.yml' down
