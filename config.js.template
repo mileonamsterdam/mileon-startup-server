@@ -11,6 +11,7 @@ const config = {
     stubpath: '/api/settings/model-data',
     BROADCAST_CHANNEL: 'broadcast:',
     STREAMING_CHANNEL: 'stream/',
+    PERSIST_WBM: false
 };
 
 module.exports = config;

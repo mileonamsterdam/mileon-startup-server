@@ -8,6 +8,7 @@
  *  additional stubserver to hold data
  */
 const express = require('express');
+const fs = require('fs');
 const { Server } = require("socket.io");
 const http = require('http');
 const https = require('https');
@@ -46,7 +47,7 @@ io.on("connection", (client) => {
             io.emit(room, data);
         } else if (room.includes(config.STREAMING_CHANNEL)) {
             try {
-                //fs.appendFileSync('stream.webm', data);
+                config.PERSIST_WBM&&fs.appendFileSync('stream.webm', data);
                 const base64Data =  data.toString().replace(/^data:image\/\w+;base64,/, ''); //'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABAL...';
                 const imageBuffer = Buffer.from(base64Data, 'base64');
                 const assignedRoom = room.replace(config.STREAMING_CHANNEL,'');

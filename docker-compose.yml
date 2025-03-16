@@ -13,4 +13,5 @@ services:
     volumes:
       - ./index.js:/home/node/app/index.js
       - ./config.js:/home/node/app/config.js
+      - ./data:/home/node/app/data
       - ./stream.webm:/home/node/app/stream.webm
