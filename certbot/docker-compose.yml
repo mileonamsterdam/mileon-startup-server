@@ -1,10 +1,10 @@
-
 services:
   certbot:
-    image: nbraun1/certbot
-    env_file:
-      - env.env
+    image: certbot/certbot
+    container_name: certbot
     ports:
-      - 80:80
+      - "80:80" # Expose port 80 for the ACME challenge
     volumes:
-      - ../data:/etc/letsencrypt
+      - ./data/pem:/etc/letsencrypt
+      - ./data/www:/var/www/certbot
+    command: certonly --standalone -d yourdomain.com --non-interactive --agree-tos -m your-email@example.com
