@@ -1,7 +1,7 @@
 # Setup cert
 - make sure port 80 can be exposed on your system
 - in certbot/
-    - rn .env.template .env
+    - cp .env.template .env
     - configure EMAIL&DOMAIN in .env file
     - start container using docker-compose file
     - when finished, .pems will be stored in data/live/DOMAIN/ and will be valid 3months max
