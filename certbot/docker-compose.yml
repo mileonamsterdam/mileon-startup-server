@@ -4,7 +4,8 @@ services:
     container_name: certbot
     ports:
       - "80:80" # Expose port 80 for the ACME challenge
+    env_file:
+      - env.env
     volumes:
-      - ./data/pem:/etc/letsencrypt
-      - ./data/www:/var/www/certbot
-    command: certonly --standalone -d yourdomain.com --non-interactive --agree-tos -m your-email@example.com
+      - ./data:/etc/letsencrypt/live/${DOMAIN}
+    command: certonly --standalone -d ${DOMAIN} -m ${EMAIL} --agree-tos --non-interactive
