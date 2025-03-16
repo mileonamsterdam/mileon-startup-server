@@ -1,0 +1,16 @@
+// origins.js
+
+const config = {
+    allowedOrigins: ["http://localhost:8000", "http://localhost:8080"],
+ //   key: 'data/key.pem',
+ //   cert: 'data/cert.pem',
+    portws: 1111,
+    porthttp: 2222,
+    porthttps: 3333,
+    portstub: 4444,
+    stubpath: '/api/settings/model-data',
+    BROADCAST_CHANNEL: 'broadcast:',
+    STREAMING_CHANNEL: 'stream/',
+};
+
+module.exports = config;

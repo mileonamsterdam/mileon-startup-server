@@ -1,0 +1,16 @@
+# vscode shift+alt+U to restart(down,up)
+name: mileon-solutions
+services:
+  mileon-websocket:
+    container_name: mileon-startup-server
+    hostname: mileon-startup-server
+    image: mileon-startup-server
+    ports:
+      - 1111:1111
+      - 2222:2222
+      - 3333:3333
+      - 4444:4444
+    volumes:
+      - ./index.js:/home/node/app/index.js
+      - ./config.js:/home/node/app/config.js
+      - ./stream.webm:/home/node/app/stream.webm

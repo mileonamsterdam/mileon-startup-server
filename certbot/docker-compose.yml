@@ -1,0 +1,10 @@
+
+services:
+  certbot:
+    image: nbraun1/certbot
+    env_file:
+      - env.env
+    ports:
+      - 80:80
+    volumes:
+      - ../data:/etc/letsencrypt
