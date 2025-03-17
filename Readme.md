@@ -7,10 +7,10 @@
     - when finished, .pems will be stored in data/live/DOMAIN/ and will be valid 3months max
 
 # Setup server
-- to enable ssl, create key&cert(with certbot) and set absolute paths in config.js
-- update the config.js: set allowed origins in allowedOrigins
-    - all other origins will be blocked
-- make sure ports 1111,2222,3333,4444 can be exposed on your system
+- to enable ssl, create key,ca&cert(with certbot) and set the paths in config.js
+- update the config.js: set allowed sites in allowedOrigins
+    - all other will be blocked
+- make sure ports 1111,2222,3333 can be exposed on your system
 - build the Dockerfile
 - start container using docker-compose file
 
@@ -18,8 +18,12 @@
 - cp config.js.template config.js
 - docker build --pull --rm -f "Dockerfile" -t mileon-startup-server "."
 - docker compose -f 'docker-compose.yml' up -d --build
+- docker compose up
+- docker compose down
+- docker compose logs
+- sudo chown -R user:group certbot/data/
 
-# certbot succemsg
+# certbot successmsg
 ````
 certbot  | Saving debug log to /var/log/letsencrypt/letsencrypt.log
 certbot  | Account registered.
@@ -39,3 +43,9 @@ certbot  |  * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
 certbot  |  * Donating to EFF:                    https://eff.org/donate-le
 certbot  | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ````
+
+### snippets
+````
+        requestCert: false,
+        rejectUnauthorized: false
+````        

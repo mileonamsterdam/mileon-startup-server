@@ -19,6 +19,7 @@ if(withssl) {
     options = {
         key: fs.readFileSync(config.key),
         cert: fs.readFileSync(config.cert),
+        ca: fs.readFileSync(config.ca),
     };
 }
 /** simple observer class */
@@ -122,27 +123,3 @@ Content-Length: 12345
 [binary data of the next JPEG frame]
 
  */
-
-// Server to listen and hold POST requests and pass data to GET requests
-/**
- * POST data 
- * GET data 
- */
-const StubServer = express();
-const stubmsg = () => console.log('Stub server is running on port:', config.portstub);
-StubServer.use(express.json());
-let userdata = {
-    msg: [],
-};
-StubServer.post(config.stubpath, (req, res) => {
-    const data = req.body;
-    userdata.msg = data;
-    const responseData = {
-        message: 'ok',
-    };
-    res.status(200).json(responseData);
-});
-StubServer.get(config.stubpath, (_, res) => {
-    res.status(200).json(userdata.msg);
-});
-StubServer.listen(config.portstub, stubmsg);

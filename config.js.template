@@ -3,12 +3,11 @@
 const config = {
     allowedOrigins: ["http://localhost:8000", "http://localhost:8080"],
 //  key:  'certbot/data/live/_domain_/privkey.pem',
-//  cert: 'certbot/data/live/_domain_/fullchain.pem',
+//  cert: 'certbot/data/live/_domain_/cert.pem',
+//  ca: 'certbot/data/live/_domain_/chain.pem',
     portws: 1111,
     porthttp: 2222,
     porthttps: 3333,
-    portstub: 4444,
-    stubpath: '/api/settings/model-data',
     BROADCAST_CHANNEL: 'broadcast:',
     STREAMING_CHANNEL: 'stream/',
     PERSIST_WBM: false
